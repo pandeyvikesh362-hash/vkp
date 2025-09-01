@@ -1,0 +1,141 @@
+1. Explain Switch 
+
+ANS-A network switch is a device that connects devices within a network, forwarding data packets based on MAC addresses.
+ It operates at the data link layer (Layer 2), enabling efficient communication between devices in the same VLAN.
+ Switches enhance network performance by reducing collisions and segmenting traffic.
+
+2. Explain Switch Boot Sequence 
+
+ANS-A Cisco switch boot sequence starts with the Power-On Self-Test (POST) to check hardware.
+ The bootstrap loads the Cisco IOS from flash memory. The IOS initializes, loads the configuration from NVRAM, 
+And starts interfaces.
+ The switch then runs Spanning Tree Protocol and is ready for operation.
+
+
+3. Explain Three Methods to access Switch Command Line 
+Interface 
+
+ANS-Three methods to access a Cisco switch’s Command Line Interface (CLI) are:
+
+ (a)Console: Connect via a console port using a rollover cable and terminal emulator (e.g., PuTTY) for direct access.
+ (b)Telnet: Remotely access the CLI over the network using Telnet, requiring VTY configuration and an IP address.
+ (c)SSH: Securely access the CLI remotely via SSH, needing VTY setup, IP, and crypto key generation.
+
+
+4. Explain and Configuring the Cisco Internet Operating System 
+
+ANS-Required command for configuring the cisco internet operating system are:
+   enable
+configure terminal
+hostname Switch1
+interface vlan 1
+ ip address 192.168.1.2 255.255.255.0
+ no shutdown
+ip default-gateway 192.168.1.1
+vlan 10
+ name SALES
+interface fastEthernet 0/1
+ switchport mode access
+ switchport access vlan 10
+line vty 0 4
+ transport input ssh
+ login local
+username admin secret cisco123
+ip domain-name example.com
+crypto key generate rsa
+service password-encryption
+write memory
+
+
+5. Explain Switch Port 
+
+ANS-A switch port is a physical interface on a network switch that connects devices like computers or other switches.
+ It operates at Layer 2, forwarding frames based on MAC addresses. 
+Ports can be configured as access (single VLAN) or trunk (multiple VLANs) modes,
+ Supporting network segmentation and communication.
+
+
+6- An engineer connects to Router R1 and issues a show ip ospf neighbor command. 
+The status of neighbor 2.2.2.2 lists FULL/BDR. What does the BDR mean? 
+A. R1 is an Area Border Router. 
+B. R1 is a backup designated router. 
+C. Router 2.2.2.2 is an Area Border Router. 
+D. Router 2.2.2.2 is a backup designated router. 
+
+ANS-D. Router 2.2.2.2 is a backup designated router.
+
+
+
+7- Which command is used to view the neighbor discovery table on a PC? 
+A. show ipv6 neighbor 
+B. show ipv6 neighbors 
+C. netsh interface ipv6 show neighbor 
+D. netsh interface ipv6 show neighbors 
+
+ANS-C. netsh interface ipv6 show neighbor
+
+
+8- What type of variable is being shown? Routers = [R1,R2,R3] 
+A. List 
+B. Dictionary 
+C. Simple 
+D. Unsigned integers 
+
+ANS-A. List
+
+
+9- Identify the fields in an IPv4 header. (Choose three) 
+A. Host component 
+B. Time to Live 
+C. Source address 
+D. Destination address
+
+ANS-B. Time to Live 
+    C. Source address 
+    D. Destination address
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
