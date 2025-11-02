@@ -1,0 +1,448 @@
+1. What two options are provided in the type of installation window during Windows 
+Server 2016 installation? 
+
+ANS-The two options provided in the "Select the type of installation" window during Windows Server 2016 installation are:
+
+(a) Server Core Installation
+(b) Server with a GUI
+
+2. Write the step How to configure server step by step? 
+
+ANS-Here’s how to configure a Windows Server 2016 step-by-step in 50 words:
+
+(a) Install OS (Server Core/GUI).
+(b) Set static IP.
+(c)Rename server, join domain.
+(d)Activate license.
+(e)Update Windows.
+(f)Install roles (e.g., AD DS).
+(g)Configure firewall.
+(h)Set time zone.
+(i)Enable Remote Desktop.
+(j)Secure with strong passwords.
+
+3. What are the Pre installation tasks? 
+
+ANS-Pre-installation tasks for Windows Server 2016:
+
+(a)Verify hardware compatibility (CPU, RAM, storage, network) with Microsoft HCL.
+(b)Check system requirements: 1.4 GHz 64-bit CPU, 512 MB RAM (Core) / 2 GB (GUI), 32 GB disk.
+(c)Backup critical data on target system.
+(d)Download ISO and create bootable media (USB/DVD).
+(e)Plan installation type: Server Core or Server with a GUI.
+(f)Gather network info: IP, subnet, gateway, DNS.
+(g)Obtain product key.
+(h)Configure BIOS/UEFI: Enable virtualization, set boot order.
+
+4. What are the Post installation tasks? 
+
+ANS-Post-installation tasks for Windows Server 2016:
+
+(a)Set computer name and join domain (if needed).
+(b)Configure static IP, subnet mask, gateway, DNS.
+(c)Activate Windows with product key.
+(d)Install latest updates via Windows Update.
+(e)Set correct time zone and sync time.
+(f)Install roles/features (e.g., AD DS, DNS, DHCP) via Server Manager.
+(g)Configure firewall rules for required services.
+(h)Enable Remote Desktop (if GUI/remote access needed).
+(i)Set strong administrator password.
+(j)Install drivers/antivirus and perform initial backup.
+
+
+5. What is the standard upgrade path for Windows Server? 
+
+ANS-Upgrade to Windows Server 2016 only from 2012 or 2012 R2.
+Allowed: Standard → Standard/Datacenter; Datacenter → Datacenter.
+Same language, same installation type.
+Not supported: Skipping versions, Evaluation → Full, Core ↔ GUI during upgrade.
+Use clean install or migration for unsupported paths
+
+6. What is the Physical structure of AD? 
+
+ANS-Physical Structure of Active Directory (AD):
+Active Directory's physical structure consists of:
+
+(a)Domain Controllers (DCs)
+
+.Servers that store AD database (NTDS.DIT) and authenticate users.
+
+
+(b)Sites
+
+.Logical grouping of well-connected subnets to control replication traffic.
+
+
+(c)Site Links
+
+.Connections between sites defining replication path and cost.
+
+
+(d)Global Catalog (GC) Servers
+
+.DCs hosting partial replicas of all domains for forest-wide queries.
+
+
+(e)Replication Topology
+
+.Automatic KCC-generated connections (intrasite & intersite) using RPC/IP.
+
+
+7. What is the Logical components of Active Directory? 
+
+ANS-Active Directory's logical components organize data hierarchically:
+
+.Forest: Root container, shared schema, single security boundary.
+.Domain: Security & replication boundary, unique namespace.
+.Domain Tree: Contiguous domains sharing namespace.
+.Organizational Units (OUs): Containers for objects, delegate administration.
+.Objects: Users, groups, computers, GPOs.
+.Schema: Defines object classes/attributes.
+.Partitions: Configuration, Schema, Domain (replicated separately).
+
+
+8. What is the Full form Of LDAP?
+
+ANS-
+LDAP stands for Lightweight Directory Access Protocol.
+
+
+9. What is the location of the AD database? 
+
+ANS-The Active Directory database file is:
+NTDS.DIT
+Default location:
+ %SystemRoot%\NTDS\NTDS.DIT
+ (Usually C:\Windows\NTDS\NTDS.DIT)
+ Associated files in same folder:
+
+.edb.log, edb.chk, temp.edb
+.SYSVOL (at %SystemRoot%\SYSVOL) stores GPOs and scripts.
+
+
+10. What is child DC?
+
+ANS-Child Domain Controller (Child DC) is a Domain Controller (DC) in a child domain within an Active Directory forest.
+
+.It authenticates users and replicates AD data only within its own child domain.
+.Does not hold the full forest schema or configuration.
+.Participates in intrasite and intersite replication with other DCs in the same domain.
+.Example: sales.example.com is a child of example.com → DCs in sales.example.com are Child DCs.
+
+
+11. Explain the term forest in AD
+
+ANS-Forest in Active Directory (AD):
+A forest is the top-level container in Active Directory, representing a complete AD instance.
+Key Points:
+
+.Contains one or more domains (root + child domains).
+.Shares a common schema, configuration, and Global Catalog.
+.Acts as a security boundary — trust between forests must be manually created.
+.All domains in a forest automatically trust each other (transitive trusts).
+.Single point of schema and configuration replication.
+
+Example:
+example.com (root) → sales.example.com, hr.example.com (child domains) = one forest.
+
+
+12. What is Active Directory? Check all that apply. 
+● An open-source directory server 
+● A Windows-only implementation of a directory server 
+● Microsoft's implementation of a directory server 
+● An LDAP-compatible directory server 
+
+ANS-Correct options (check all that apply):
+
+✅ A Windows-only implementation of a directory server
+✅ Microsoft's implementation of a directory server
+✅ An LDAP-compatible directory server
+
+Incorrect:
+
+❌ An open-source directory server (Active Directory is proprietary, not open-source)
+
+
+13. When you create an Active Directory domain, what's the name of the default user 
+account? 
+● Superuser 
+● Root 
+● Username 
+● Administrator
+
+ANS-Correct answer:
+● Administrator
+
+14. AD domain provides which of the following advantages? Check all that apply.
+
+● Centralized authentication 
+● More detailed logging 
+● Centralized management with GPOs 
+● Better performance
+
+ANS-Correct answers (check all that apply):
+
+✅ Centralized authentication
+✅ Centralized management with GPOs
+
+Incorrect:
+
+❌ More detailed logging (not a primary benefit of AD)
+❌ Better performance (AD adds overhead; performance depends on design)
+
+15. What are the minimum hardware requirements for installing Windows Server 
+2016? 
+
+ANS-Windows Server 2016 minimum requirements:
+
+(a)Processor: 1.4 GHz 64-bit (x64), supports NX, DEP, SLAT.
+(b)RAM: 512 MB (Server Core), 2 GB (Desktop Experience).
+(c)Storage: 32 GB available space.
+(d)Network: Gigabit Ethernet, PXE-capable.
+(e)Other: UEFI 2.3.1c with Secure Boot (if enabled), DVD drive (if installing from media), 1024x768 display.
+Virtual machines may need extra RAM during setup. Exceeding minimums is recommended for production. (85 words)
+
+
+16. Explain the different editions of Windows Server 2016 and their features. 
+
+ANS-Windows Server 2016 Editions (120 words):
+
+.Essentials: For small businesses (<25 users). 
+Includes simplified management, client backup, Remote Web Access; no CALs required.
+.Standard: Ideal for physical/virtual environments. 
+Supports 2 VMs/OSEs, Storage Spaces Direct, unlimited containers; requires core + CAL licensing.
+.Datacenter: For highly virtualized/cloud environments. 
+Adds unlimited VMs, Shielded VMs, Storage Replica, Host Guardian Service; core + CAL licensing.
+.Multipoint Premium (legacy): Multi-user VDI via RemoteFX.
+
+All support Server Core/Desktop Experience. Nano Server (lightweight) is deprecated later.
+ Hyper-V Server (free) offers only Hyper-V. (92 words)
+
+17. Walk through the steps of installing Windows Server 2016 using GUI mode. 
+
+ANS-Steps to Install Windows Server 2016 (GUI Mode):
+
+(a)Boot from media (DVD/USB).
+(b)Select language, time, keyboard → Click Next.
+(c)Click Install now.
+(d)Enter product key (or skip for later) → Next.
+(e)Select Windows Server 2016 Datacenter (Desktop Experience) or Standard (Desktop Experience) → Next.
+(f)Accept license terms → Next.
+(g)Choose Custom: Install Windows only (advanced).
+(h)Select drive/partition → Click Next (formats if needed).
+(i)Installation begins (copying files, restarting).
+(j)After reboot, set Administrator password → Finish.
+(k)Log in → Server Manager launches (GUI mode active).
+
+
+18. Describe the steps for installing Windows Server 2016 in Server Core mode. 
+
+ANS-Steps to Install Windows Server 2016 in Server Core Mode:
+
+(a)Boot from DVD/USB installation media.
+(b)Select language, time, keyboard → Next.
+(c)Click Install now.
+(d)Enter product key (or skip) → Next.
+(e)Choose Windows Server 2016 Standard (Server Core) or Datacenter (Server Core) → Next.
+(f)Accept license terms → Next.
+(g)Select Custom: Install Windows only (advanced).
+(h)Choose drive/partition → Next (auto-formats if unallocated).
+(i)Installation proceeds (files copy, system restarts).
+(j)After final reboot, press Ctrl+Alt+Delete → Set Administrator password.
+(k)Log in → Command Prompt appears (Server Core active).
+
+
+19. How do you configure network settings during Windows Server 2016 installation? 
+
+ANS-
+Network settings are NOT configured during Windows Server 2016 installation.
+They are set post-installation using:
+
+Server Core (CLI):
+powershell
+# List interfaces
+Get-NetAdapter
+
+# Configure static IP
+New-NetIPAddress -InterfaceIndex X -IPAddress 192.168.1.10 -PrefixLength 24 -DefaultGateway 192.168.1.1
+
+# Set DNS
+Set-DnsClientServerAddress -InterfaceIndex X -ServerAddresses 8.8.8.8,8.8.4.4
+GUI (Desktop Experience):
+(a)Open Server Manager → Local Server → Click Ethernet.
+(b)Right-click adapter → Properties → IPv4 → Set IP, subnet, gateway, DNS → OK.
+
+
+20. Explain the process of promoting a Windows Server to a domain controller.
+
+ANS-Promote Windows Server 2016 to DC:
+
+(a)Set static IP, ensure DNS access.
+(b)In Server Manager → Add Roles → Install Active Directory Domain Services.
+(c)Click flag → Promote to domain controller.
+(d)Choose: New forest (root name) or Add to existing.
+(e)Set functional level, enable DNS, GC.
+(f)Review paths, pass prerequisites → Install.
+(g)Server reboots as DC with NTDS.DIT and SYSVOL.
+(h)Verify with dcdiag. 
+
+21. Discuss the steps involved in upgrading from a previous version of Windows 
+Server to Windows Server 2016.
+
+ANS- Upgrade to Windows Server 2016:
+
+(a)Verify compatibility: Source = 2012/2012 R2; same language/edition (Standard → Standard/Datacenter).
+(b)Backup system, apps, AD (if DC).
+(c)Run setup from 2016 ISO on running server.
+(d)Select Upgrade: Install Windows and keep files, settings, and applications.
+(e)Confirm edition, accept license.
+(f)Compatibility check passes → proceed.
+(g)Upgrade begins; server restarts multiple times.
+(h)Post-upgrade: Activate, install updates, verify roles (use Get-WindowsFeature).
+(i)Test apps, replication (repadmin /replsummary).
+
+
+22. What is Active Directory Domain Services (AD DS), and what are its key 
+components? 
+
+ANS-Active Directory Domain Services (AD DS) is Microsoft’s directory service for centralized identity and 
+Access management in Windows networks.
+Key Components:
+
+(a)Domain: Security and replication boundary with unique namespace.
+(b)Forest: Collection of domains sharing schema and trust.
+(c)Domain Controller (DC): Server hosting AD database (NTDS.DIT).
+(d)Schema: Defines object classes and attributes.
+(e)Global Catalog (GC): Forest-wide index for fast searches.
+(f)Sites & Site Links: Control replication over WAN.
+(g)Organizational Units (OUs): Containers for delegation and GPOs.
+(h)SYSVOL: Stores Group Policy templates and scripts.
+
+
+23. How do you create a new Active Directory user account in Windows Server ? 
+
+ANS-
+Create a New AD User Account in Windows Server 2016
+
+Using GUI (Active Directory Users and Computers):
+(a)Open Server Manager → Tools → Active Directory Users and Computers.
+(b)Expand domain → Right-click Users (or desired OU) → New → User.
+(c)Enter First name, Last name, User logon name (e.g., jdoe) → Next.
+(d)Set password → Check User must change password at next logon (recommended) → Next.
+(e)Review → Finish.
+User created — appears in OU, ready for group membership or GPO application.
+
+Using PowerShell (on DC):
+powershell
+New-ADUser -Name "John Doe" -UserPrincipalName "jdoe@domain.com" `
+           -SamAccountName "jdoe" -AccountPassword (Read-Host -AsSecureString) `
+           -Enabled $true -Path "OU=Users,DC=domain,DC=com" -ChangePasswordAtLogon $true
+
+
+
+24. Explain the process of creating and managing Group Policy Objects (GPOs) in 
+Windows Server 2016 or 2019.
+
+ANS- Create & Manage GPOs:
+
+(a)Open Group Policy Management (Server Manager → Tools).
+(b)Expand forest → Right-click Group Policy Objects → New → Name GPO → OK.
+(c)Right-click GPO → Edit → Configure settings (Computer/User).
+(d)Link GPO: Right-click OU/domain/site → Link an Existing GPO.
+(e)Enforce (optional): Right-click link → Enforced.
+(f)Filter: Use Security Filtering (remove Authenticated Users, add groups).
+(g)Order: Set link priority via Link Order.
+(h)Force update: gpupdate /force.
+(i)Verify: gpresult /r.
+GPOs apply at startup/logon in LSDOU order (Local, Site, Domain, OU).
+
+25. What are Organizational Units (OUs) in Active Directory, and how do you use 
+them?
+
+ANS-
+OUs in Active Directory are containers to organize users, groups, and computers.
+Uses:
+
+.Delegate administration (e.g., reset passwords in Sales OU).
+.Apply GPOs (link policies to OU).
+.Logical grouping by department/location.
+
+How to use:
+
+(a)Open ADUC → Right-click domain → New → OU.
+(b)Move objects or create inside.
+(c)Link GPOs or delegate control.
+Design hierarchy first.
+
+24. Describe the process of delegating administrative privileges in Active Directory. 
+
+ANS-
+Delegate AD Privileges:
+
+(a)Open ADUC → Right-click OU → Delegate Control.
+(b)Click Next → Add users/groups → Next.
+(c)Choose Common tasks (e.g., reset passwords) or Custom → Next.
+(d)Select permissions (e.g., “Reset user passwords”) → Next → Finish.
+(e)Verify via Effective Access tab. Delegation limits scope to OU without full admin rights.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
